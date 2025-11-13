@@ -1,10 +1,13 @@
+import About from "@/components/About";
 import Hero from "@/components/Hero";
+import Products from "@/components/Products";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      {/* Add About, Capabilities, Highlights, Contact sections here */}
+      <Products />
+      <About /> 
     </main>
   );
 }
