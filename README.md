@@ -2,19 +2,16 @@
 
 A **futuristic, high-tech, military-grade UAV/drone systems** landing page built with **Next.js, Tailwind CSS, ShadCN UI, and Framer Motion**.
 
----
-
 ## 🔹 Features
 
-- Hero section with cinematic drone video and HUD overlays  
+- Hero section with cinematic drone video  
 - SPA scrolling with smooth transitions  
-- Product/Capabilities cards with tilt/scale hover effects  
+- Product/Capabilities cards with scale hover effects  
 - Scroll-triggered animations and micro-interactions  
 - Mobile-responsive with hamburger menu  
 - Sticky, scroll-aware navbar  
 - Footer with contact section  
 
----
 
 ## 💻 Tech Stack
 
@@ -22,9 +19,8 @@ A **futuristic, high-tech, military-grade UAV/drone systems** landing page built
 - **Tailwind CSS**  
 - **ShadCN UI**  
 - **Framer Motion**  
-- **Google Fonts: Poppins**  
+- **Google Fonts: Poppins (primary), Inter / Montserrat (optional)**  
 
----
 
 ## 🚀 Setup & Run
 
@@ -46,7 +42,6 @@ npm run dev
 
 4. Open http://localhost:3000
 
----
 
 ## 🖌 Design Notes
 
@@ -56,6 +51,5 @@ npm run dev
 - Animations: Framer Motion for hero, CTA, cards, and scroll reveals
 
 
---- 
 
-🌐 [Live Demo](https://vyomgarud-demo.vercel.app)
+🌐 [Live Demo](https://vyomgarud-landing-topaz.vercel.app/)
