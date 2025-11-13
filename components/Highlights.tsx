@@ -7,7 +7,7 @@ export default function Highlights() {
   const bullets = [
     "Built for Extremes | Engineered for zero downtime in extreme operational environments.",
     "Secure Link | End-to-end data link security and proprietary anti-jamming protocols.",
-    "Pinpoint Accuracy | Absolute Positioning",
+    "Pinpoint Accuracy | Autonomous navigation and sensor systems deliver real-time locations.",
   ];
 
   return (

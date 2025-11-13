@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,14 +21,14 @@ export default function Navbar() {
     const observer = new IntersectionObserver(
       (entries) => {
         let anySectionVisible = false;
-  
+
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
             anySectionVisible = true;
           }
         });
-  
+
         // If no sections are intersecting, reset activeSection
         if (!anySectionVisible) {
           setActiveSection("");
@@ -37,12 +36,12 @@ export default function Navbar() {
       },
       { threshold: 0, rootMargin: "-50% 0px -50% 0px" }
     );
-  
+
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-  
+
     return () => {
       sections.forEach((id) => {
         const el = document.getElementById(id);
@@ -50,7 +49,7 @@ export default function Navbar() {
       });
     };
   }, []);
-  
+
   return (
     <>
       {/* Navbar */}
@@ -116,19 +115,17 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 w-64 h-full bg-charcoal/95 backdrop-blur-md shadow-lg z-40 flex flex-col p-6 space-y-4"
+            className="fixed mt-14 right-0 w-64 h-full bg-charcoal/95 backdrop-blur-md shadow-lg z-40 flex flex-col p-6 space-y-4"
           >
             {sections.map((link) => {
-              const isActive = activeSection === link;
               return (
                 <motion.a
                   key={link}
                   href={`#${link}`}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => setMobileOpen(false)} // Close the mobile menu on click
                   className={`text-lg uppercase font-semibold px-3 py-2 transition-colors duration-300 ${
-                    isActive
-                      ? "bg-accentOrange/20 border border-accentOrange text-white rounded-sm"
-                      : "text-white hover:bg-accentOrange/10 hover:border hover:border-accentOrange hover:text-white rounded-sm"
+                    // Removed active state for mobile
+                    "text-white hover:bg-accentOrange/10 hover:border hover:border-accentOrange hover:text-white rounded-sm"
                   }`}
                 >
                   {link === "highlights"

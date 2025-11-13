@@ -60,7 +60,7 @@ export default function Hero() {
         loop
         muted
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        src="/videos/hero3.mp4"
+        src="/videos/herof.mp4"
       />
 
       {/* Top & Bottom Fade */}

@@ -49,7 +49,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       ref={cardRef}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="group relative rounded-2xl p-6 min-h-[400px] flex flex-col justify-between overflow-hidden bg-[rgba(20,20,20,0.6)] backdrop-blur-md border border-gray-700/60 hover:border-amber-600 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,123,0,0.25)]"
+      className="group relative rounded-md p-6 min-h-[400px] flex flex-col justify-between overflow-hidden bg-[rgba(20,20,20,0.6)] backdrop-blur-md border border-gray-700/60 hover:border-amber-600 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,123,0,0.25)]"
       whileHover={{ scale: 1.02 }}
       style={{
         transform: `perspective(1000px) rotateX(${transform.rotateX}deg) rotateY(${transform.rotateY}deg) translate3d(${transform.translateX}px, ${transform.translateY}px, 0)`,
