@@ -15,10 +15,9 @@ export default function Highlight({ text, idx }: HighlightProps) {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+        visible: { opacity: 1, y: 0, transition: { delay: 0.5, ease: "easeOut" } },
       }}
       className="p-6 bg-charcoal/50 border border-gray-700/50 text-center relative overflow-hidden rounded-sm transition-colors duration-300 group hover:border-accentOrange hover:shadow-lg"
-      whileHover={{ scale: 1.02 }}
     >
       {/* Animated Orange Corner/Flare */}
       <span className="absolute top-0 right-0 w-1 h-12 bg-accentOrange opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>

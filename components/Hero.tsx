@@ -70,20 +70,35 @@ export default function Hero() {
        <div className="relative z-20 text-center max-w-3xl flex flex-col items-center gap-6">
         {/* H1 with word-by-word effect */}
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold uppercase leading-tight flex flex-wrap justify-center gap-2">
-          {headingWords.map((word, idx) => (
-            <motion.span
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              animate={wordIndex > idx ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className={`
-                ${word === "DOMINANCE." ? "text-accentOrange glow" : ""}
-                ${word === "AIR" ? "ml-4" : ""} // extra spacing before AIR
-              `}
-            >
-              {word}
-            </motion.span>
-          ))}
+        {headingWords.map((word, idx) => {
+  const isDominance = word === "DOMINANCE.";
+  const showGlow = isDominance && wordIndex === idx + 1; // glow only while animating in
+
+  return (
+    <motion.span
+      key={idx}
+      className={`relative inline-block font-bold ${
+        isDominance && wordIndex > idx ? "text-accentOrange" : "text-white"
+      }`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={wordIndex > idx ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+    >
+      {word}
+
+      {/* One-time glow behind DOMINANCE */}
+      {showGlow && (
+        <motion.span
+          className="absolute inset-0 z-[-1] rounded-md bg-accentOrange/70 blur-xl"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        />
+      )}
+    </motion.span>
+  );
+})}
+
         </h1>
 
         {/* Animated Subtext */}
@@ -111,7 +126,7 @@ export default function Hero() {
           50.01%, 100% { opacity: 0; }
         }
         .glow{
-          text-shadow: 0 0 8px #ff7f00, 0 0 16px #ff7f00, 0 0 24px #ff7f00;
+          text-shadow: 0 0 10px #ff7f00, 0 0 18px #ff7f00, 0 0 26px #ff7f00;
         }
       `}</style>
     </section>

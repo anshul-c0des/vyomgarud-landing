@@ -4,8 +4,8 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="px-6 sm:px-8 py-16 sm:py-24 bg-gradient-to-br from-accentOrange/20 via-accentOrange/10 to-bg-dark border-t-2 border-accentOrange"
-    >
+      className="px-6 sm:px-8 py-16 sm:py-24 bg-gradient-to-br from-accentOrange/20 via-accentOrange/10 to-charcoal border-t-2 border-accentOrange"
+    > 
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         
         {/* Left Side - Text */}

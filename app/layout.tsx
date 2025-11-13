@@ -8,6 +8,9 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400","600","700"] });
 export const metadata = {
   title: "VyomGarud - Military-Grade UAV Systems",
   description: "Futuristic, high-tech drone systems",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

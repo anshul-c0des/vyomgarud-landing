@@ -64,7 +64,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <motion.div
             className="w-full h-full"
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay:0.5, ease: "easeOut" }}
           >
             <Image
               src={image}
@@ -102,12 +102,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           hidden: { opacity: 0, y: 10 },
           show: { opacity: 1, y: 0, transition: { staggerChildren: 0.05 } },
         }}
+        transition= {{delay: 0.5, ease: "easeOut"}}
       >
         {features?.map((f, i) => (
           <motion.span
             key={i}
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            className="text-xs px-2 py-1 rounded-full bg-white/5 text-gray-200 border border-gray-600/50 hover:border-orange-400/60 transition-colors"
+            className="text-xs px-2 py-1 rounded-full bg-white/5 text-gray-200 border border-gray-600/50 hover:border-orange-400/60 transition-colors" transition={{delay: 0.5, ease: "easeOut"}}
           >
             {f}
           </motion.span>

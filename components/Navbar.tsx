@@ -5,17 +5,55 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
+  const sections = ["about", "products", "highlights", "contact"];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
+  // Scroll detection for navbar background
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Intersection Observer to detect active section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let anySectionVisible = false;
+  
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+            anySectionVisible = true;
+          }
+        });
+  
+        // If no sections are intersecting, reset activeSection
+        if (!anySectionVisible) {
+          setActiveSection("");
+        }
+      },
+      { threshold: 0, rootMargin: "-50% 0px -50% 0px" }
+    );
+  
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  
+    return () => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, []);
+  
   return (
     <>
+      {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -30,16 +68,26 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex space-x-8 text-gray-300 font-medium">
-          {["about", "products", "highlights", "contact"].map((link) => (
-            <a
-              key={link}
-              href={`#${link}`}
-              className="hover:text-accentOrange transition-colors duration-300 uppercase tracking-wide"
-            >
-              {link === "highlights" ? "Why Us" : link.charAt(0).toUpperCase() + link.slice(1)}
-            </a>
-          ))}
+        <div className="hidden md:flex space-x-4">
+          {sections.map((link) => {
+            const isActive = activeSection === link;
+            return (
+              <motion.a
+                key={link}
+                href={`#${link}`}
+                whileHover={{ scale: 1.05 }}
+                className={`uppercase tracking-wide px-3 py-1 font-medium transition-colors duration-300 ${
+                  isActive
+                    ? "bg-accentOrange/20 border border-accentOrange text-white rounded-sm"
+                    : "text-gray-300 hover:bg-accentOrange/10 hover:border hover:border-accentOrange hover:text-white rounded-sm"
+                }`}
+              >
+                {link === "highlights"
+                  ? "Why Us"
+                  : link.charAt(0).toUpperCase() + link.slice(1)}
+              </motion.a>
+            );
+          })}
         </div>
 
         {/* CTA */}
@@ -68,18 +116,27 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 w-64 h-full bg-charcoal/95 backdrop-blur-md shadow-lg z-40 flex flex-col p-6 space-y-6"
+            className="fixed top-0 right-0 w-64 h-full bg-charcoal/95 backdrop-blur-md shadow-lg z-40 flex flex-col p-6 space-y-4"
           >
-            {["about", "products", "highlights", "contact"].map((link) => (
-              <a
-                key={link}
-                href={`#${link}`}
-                onClick={() => setMobileOpen(false)}
-                className="text-white mt-12 text-lg uppercase font-semibold hover:text-accentOrange transition-colors duration-300"
-              >
-                {link === "highlights" ? "Why Us" : link.charAt(0).toUpperCase() + link.slice(1)}
-              </a>
-            ))}
+            {sections.map((link) => {
+              const isActive = activeSection === link;
+              return (
+                <motion.a
+                  key={link}
+                  href={`#${link}`}
+                  onClick={() => setMobileOpen(false)}
+                  className={`text-lg uppercase font-semibold px-3 py-2 transition-colors duration-300 ${
+                    isActive
+                      ? "bg-accentOrange/20 border border-accentOrange text-white rounded-sm"
+                      : "text-white hover:bg-accentOrange/10 hover:border hover:border-accentOrange hover:text-white rounded-sm"
+                  }`}
+                >
+                  {link === "highlights"
+                    ? "Why Us"
+                    : link.charAt(0).toUpperCase() + link.slice(1)}
+                </motion.a>
+              );
+            })}
             <Button
               className="bg-accentOrange mt-auto hover:scale-105 hover:shadow-lg w-full"
               onClick={() => setMobileOpen(false)}
