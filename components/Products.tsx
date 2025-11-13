@@ -44,7 +44,7 @@ export default function Products() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl font-bold text-center mb-3 text-white"
+          className="text-4xl md:text-5xl font-bold text-center mb-3 text-white"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

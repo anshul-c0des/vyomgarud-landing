@@ -10,6 +10,9 @@ a {
   @apply text-accentOrange hover:underline transition;
 }
 
+html{
+  scroll-behavior: smooth;
+}
 
 
 @layer base {
