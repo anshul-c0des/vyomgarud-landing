@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  const sections = ["about", "products", "highlights", "contact"];
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const sections = ["about", "products", "highlights", "contact"];   // sections list
+  const [scrolled, setScrolled] = useState(false);   // tracks if page is scrolled
+  const [mobileOpen, setMobileOpen] = useState(false);   // mobile menu
+  const [activeSection, setActiveSection] = useState("");   // currently active session
 
   // Scroll detection for navbar background
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Navbar() {
           scrolled ? "bg-charcoal/90 shadow-lg" : "bg-transparent"
         }`}
       >
-        {/* Logo */}
+        {/* Logo/Text */}
         <div className="text-2xl sm:text-3xl font-bold font-poppins text-white">
           VyomGarud
         </div>

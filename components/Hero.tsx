@@ -10,10 +10,10 @@ const animatedLines = [
 ];
 const headingWords = ["ABSOLUTE ", "AIR", "DOMINANCE."];
 export default function Hero() {
-  const [currentLine, setCurrentLine] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const controls = useAnimation();
+  const [currentLine, setCurrentLine] = useState(0);   // Text current animated subtext line
+  const [displayedText, setDisplayedText] = useState("");   // current text being displayed
+  const [wordIndex, setWordIndex] = useState(0);   // animated word in heading
+  const controls = useAnimation();   // framer motion for heading
 
   // Typing effect for subtext lines
   useEffect(() => {
@@ -38,6 +38,7 @@ export default function Hero() {
     return () => clearTimeout(timeout);
   }, [currentLine]);
 
+  // heading effect
   useEffect(() => {
     if (wordIndex < headingWords.length) {
       const timeout = setTimeout(() => {
@@ -48,7 +49,6 @@ export default function Hero() {
     }
   }, [wordIndex, controls]);
 
-  
   return (
     <section
       id="hero"
@@ -66,39 +66,40 @@ export default function Hero() {
       {/* Top & Bottom Fade */}
       <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none bg-gradient-to-b from-black/70 via-transparent to-charcoal" />
 
-       {/* Content */}
-       <div className="relative z-20 text-center max-w-3xl flex flex-col items-center gap-6">
+      {/* Content */}
+      <div className="relative z-20 text-center max-w-3xl flex flex-col items-center gap-6">
         {/* H1 with word-by-word effect */}
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold uppercase leading-tight flex flex-wrap justify-center gap-2">
-        {headingWords.map((word, idx) => {
-  const isDominance = word === "DOMINANCE.";
-  const showGlow = isDominance && wordIndex === idx + 1; // glow only while animating in
+          {headingWords.map((word, idx) => {
+            const isDominance = word === "DOMINANCE.";
+            const showGlow = isDominance && wordIndex === idx + 1; // glow only while animating in
 
-  return (
-    <motion.span
-      key={idx}
-      className={`relative inline-block font-bold ${
-        isDominance && wordIndex > idx ? "text-accentOrange" : "text-white"
-      }`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={wordIndex > idx ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6 }}
-    >
-      {word}
+            return (
+              <motion.span
+                key={idx}
+                className={`relative inline-block font-bold ${
+                  isDominance && wordIndex > idx
+                    ? "text-accentOrange"
+                    : "text-white"
+                }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={wordIndex > idx ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6 }}
+              >
+                {word}
 
-      {/* One-time glow behind DOMINANCE */}
-      {showGlow && (
-        <motion.span
-          className="absolute inset-0 z-[-1] rounded-md bg-accentOrange/70 blur-xl"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        />
-      )}
-    </motion.span>
-  );
-})}
-
+                {/* One-time glow behind DOMINANCE */}
+                {showGlow && (
+                  <motion.span
+                    className="absolute inset-0 z-[-1] rounded-md bg-accentOrange/70 blur-xl"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                  />
+                )}
+              </motion.span>
+            );
+          })}
         </h1>
 
         {/* Animated Subtext */}
@@ -122,10 +123,16 @@ export default function Hero() {
           margin-left: 1px;
         }
         @keyframes blink {
-          0%, 50% { opacity: 1; }
-          50.01%, 100% { opacity: 0; }
+          0%,
+          50% {
+            opacity: 1;
+          }
+          50.01%,
+          100% {
+            opacity: 0;
+          }
         }
-        .glow{
+        .glow {
           text-shadow: 0 0 10px #ff7f00, 0 0 18px #ff7f00, 0 0 26px #ff7f00;
         }
       `}</style>

@@ -1,21 +1,25 @@
-"use client"
+"use client";
 
 import { motion } from "framer-motion";
 
 interface HighlightProps {
-    text: string;
-    idx: number
-  }
+  text: string;
+  idx: number;
+}
 
 export default function Highlight({ text, idx }: HighlightProps) {
   // Split text into descriptor and slogan
-  const [descriptor, slogan] = text.split("|").map(str => str.trim());
+  const [descriptor, slogan] = text.split("|").map((str) => str.trim());   // to format props
 
   return (
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { delay: 0.5, ease: "easeOut" } },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { delay: 0.5, ease: "easeOut" },
+        },
       }}
       className="p-6 bg-charcoal/50 border border-gray-700/50 text-center relative overflow-hidden rounded-sm transition-colors duration-300 group hover:border-accentOrange hover:shadow-lg"
     >

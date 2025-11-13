@@ -20,14 +20,14 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const { title, name, description, image, features } = product;
   const cardRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState({
+  const [transform, setTransform] = useState({   // stores tranformations
     rotateX: 0,
     rotateY: 0,
     translateX: 0,
     translateY: 0,
   });
 
-  const handleMove = (e: MouseEvent<HTMLDivElement>) => {
+  const handleMove = (e: MouseEvent<HTMLDivElement>) => {   // when mouse is hovered
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
     const px = (e.clientX - rect.left) / rect.width;
@@ -41,7 +41,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     });
   };
 
-  const handleLeave = () =>
+  const handleLeave = () =>   // resets the transformations
     setTransform({ rotateX: 0, rotateY: 0, translateX: 0, translateY: 0 });
 
   return (
@@ -64,7 +64,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <motion.div
             className="w-full h-full"
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.6, delay:0.5, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
           >
             <Image
               src={image}
@@ -102,13 +102,17 @@ export default function ProductCard({ product }: ProductCardProps) {
           hidden: { opacity: 0, y: 10 },
           show: { opacity: 1, y: 0, transition: { staggerChildren: 0.05 } },
         }}
-        transition= {{delay: 0.5, ease: "easeOut"}}
+        transition={{ delay: 0.5, ease: "easeOut" }}
       >
         {features?.map((f, i) => (
           <motion.span
             key={i}
-            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            className="text-xs px-2 py-1 rounded-full bg-white/5 text-gray-200 border border-gray-600/50 hover:border-orange-400/60 transition-colors" transition={{delay: 0.5, ease: "easeOut"}}
+            variants={{
+              hidden: { opacity: 0, y: 10 },
+              show: { opacity: 1, y: 0 },
+            }}
+            className="text-xs px-2 py-1 rounded-full bg-white/5 text-gray-200 border border-gray-600/50 hover:border-orange-400/60 transition-colors"
+            transition={{ delay: 0.5, ease: "easeOut" }}
           >
             {f}
           </motion.span>

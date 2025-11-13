@@ -5,9 +5,8 @@ export default function Contact() {
     <section
       id="contact"
       className="px-6 sm:px-8 py-16 sm:py-24 bg-gradient-to-br from-accentOrange/20 via-accentOrange/10 to-charcoal border-t-2 border-accentOrange"
-    > 
+    >
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        
         {/* Left Side - Text */}
         <div className="text-center lg:text-left">
           <h2 className="font-montserrat text-3xl sm:text-4xl lg:text-5xl uppercase tracking-widest font-black text-white mb-4">
@@ -15,7 +14,9 @@ export default function Contact() {
           </h2>
 
           <p className="text-base sm:text-lg text-gray-400 font-inter mb-8 lg:mb-12">
-            Contact our team of specialists today to discuss how VyomGarud systems can be integrated into your operation. All inquiries are strictly confidential.
+            Contact our team of specialists today to discuss how VyomGarud
+            systems can be integrated into your operation. All inquiries are
+            strictly confidential.
           </p>
         </div>
 

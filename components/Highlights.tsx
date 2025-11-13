@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Highlight from "./Highlight";
 
-export default function Highlights() {
+export default function Highlights() {   // demo data
   const bullets = [
     "Built for Extremes | Engineered for zero downtime in extreme operational environments.",
     "Secure Link | End-to-end data link security and proprietary anti-jamming protocols.",
@@ -11,7 +11,10 @@ export default function Highlights() {
   ];
 
   return (
-    <section id="highlights" className="relative px-8 py-24 bg-charcoal overflow-hidden">
+    <section
+      id="highlights"
+      className="relative px-8 py-24 bg-charcoal overflow-hidden"
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Floating dots */}

@@ -4,12 +4,12 @@ import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 
 export default function Products() {
-  const [windowDimensions, setWindowDimensions] = useState({
+  const [windowDimensions, setWindowDimensions] = useState({   // tract current dimensions of window
     width: 0,
     height: 0,
   });
 
-  const products = [
+  const products = [   // demo data
     {
       id: "a77s",
       name: "Astra 77-S (A77-S)",
@@ -53,24 +53,24 @@ export default function Products() {
 
   const dotCount = 15;
 
-    // Track window size after component mounts
-    useEffect(() => {
-      const handleResize = () => {
-        setWindowDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      };
-  
-      // Set initial window dimensions
-      handleResize();
-  
-      // Add resize event listener
-      window.addEventListener("resize", handleResize);
-  
-      // Clean up event listener on component unmount
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
+  // Track window size after component mounts
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Set initial window dimensions
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
@@ -84,32 +84,32 @@ export default function Products() {
           const startPos = randomPosition();
           return (
             <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-orange-500 rounded-full"
-            style={{ left: startPos.x, top: startPos.y }}
-            animate={{
-              x: [
-                0,
-                windowDimensions.width - startPos.x,
-                0,
-                windowDimensions.width - startPos.x,
-              ],
-              y: [
-                0,
-                windowDimensions.height - startPos.y,
-                windowDimensions.height - startPos.y,
-                0,
-              ],
-            }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "mirror",
-              duration: 20 + Math.random() * 20,
-              ease: "linear",
-            }}
-          />
-        );
-      })}
+              key={i}
+              className="absolute w-2 h-2 bg-orange-500 rounded-full"
+              style={{ left: startPos.x, top: startPos.y }}
+              animate={{
+                x: [
+                  0,
+                  windowDimensions.width - startPos.x,
+                  0,
+                  windowDimensions.width - startPos.x,
+                ],
+                y: [
+                  0,
+                  windowDimensions.height - startPos.y,
+                  windowDimensions.height - startPos.y,
+                  0,
+                ],
+              }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "mirror",
+                duration: 20 + Math.random() * 20,
+                ease: "linear",
+              }}
+            />
+          );
+        })}
 
         {/* Animated Diagonal Lines */}
         <svg
