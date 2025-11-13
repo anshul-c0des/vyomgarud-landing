@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="px-6 sm:px-8 py-16 sm:py-24 bg-bg-dark border-t-2 border-accentOrange"
+      className="px-6 sm:px-8 py-16 sm:py-24 bg-gradient-to-br from-accentOrange/20 via-accentOrange/10 to-bg-dark border-t-2 border-accentOrange"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         
@@ -20,7 +20,7 @@ export default function Contact() {
         </div>
 
         {/* Right Side - Form */}
-        <form className="space-y-4 sm:space-y-6">
+        <form className="space-y-4 sm:space-y-6 bg-charcoal/60 p-6 sm:p-8 rounded-md backdrop-blur-sm border border-gray-700/40">
           {/* Two-column Inputs */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <input

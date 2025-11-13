@@ -39,7 +39,7 @@ export default function Products() {
   return (
     <section
       id="products"
-      className="relative px-8 py-24 bg-gradient-to-b from-charcoal/95 to-charcoal/85 overflow-hidden"
+      className="relative px-8 py-24 bg-black overflow-hidden"
     >
 
       <div className="max-w-6xl mx-auto relative z-10">

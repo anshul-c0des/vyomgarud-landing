@@ -20,7 +20,7 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed w-full z-50 px-6 sm:px-8 py-4 flex justify-between items-center backdrop-blur-md transition-colors duration-300 ${
+        className={`fixed w-full z-50 px-6 sm:px-8 py-4 flex justify-between items-center backdrop-blur-sm transition-colors duration-300 ${
           scrolled ? "bg-charcoal/90 shadow-lg" : "bg-transparent"
         }`}
       >

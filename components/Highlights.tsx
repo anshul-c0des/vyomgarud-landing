@@ -5,8 +5,8 @@ import Highlight from "./Highlight";
 
 export default function Highlights() {
   const bullets = [
-    "Built for Extremes | Unrivaled Reliability",
-    "Secure Link | Unbreakable Communication",
+    "Built for Extremes | Engineered for zero downtime in extreme operational environments.",
+    "Secure Link | End-to-end data link security and proprietary anti-jamming protocols.",
     "Pinpoint Accuracy | Absolute Positioning",
   ];
 
